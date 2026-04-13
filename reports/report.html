@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Clara Family Healthcare Large‑Scale Data Comparison & Validation Automation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; text-align: center; }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { font-size: 1em; opacity: 0.9; }
+        .meta { background: #f9f9f9; border-bottom: 2px solid #e0e0e0; padding: 20px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .meta-item { padding: 10px; background: white; border-left: 4px solid #667eea; border-radius: 4px; }
+        .meta-item strong { color: #667eea; font-size: 0.9em; }
+        .meta-item span { font-size: 1.1em; color: #333; display: block; }
+        .content { padding: 40px; }
+        section { margin-bottom: 40px; }
+        section h2 { font-size: 1.5em; color: #333; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #667eea; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.95em; }
+        table thead { background: #f0f0f0; border-bottom: 2px solid #ddd; }
+        table th { padding: 12px; text-align: left; font-weight: 600; color: #333; }
+        table td { padding: 12px; border-bottom: 1px solid #e0e0e0; }
+        table tbody tr { transition: background 0.2s; }
+        table tbody tr:hover { background: #f9f9f9; }
+        tr.pass { background-color: #f0fff4; }
+        tr.fail { background-color: #fff5f5; }
+        .status { padding: 4px 8px; border-radius: 4px; font-weight: 600; font-size: 0.85em; }
+        .status.pass { background: #d4edda; color: #155724; }
+        .status.fail { background: #f8d7da; color: #721c24; }
+        .metric-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .metric { background: #f9f9f9; padding: 15px; text-align: center; border-radius: 4px; border-left: 4px solid #667eea; }
+        .metric strong { display: block; color: #667eea; font-size: 0.9em; margin-bottom: 8px; }
+        .metric .value { font-size: 1.8em; font-weight: bold; color: #333; }
+        .metric.pass .value { color: #28a745; }
+        .metric.fail .value { color: #dc3545; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 3px; font-size: 0.85em; font-weight: 600; }
+        .badge.pass { background: #28a745; color: white; }
+        .badge.fail { background: #dc3545; color: white; }
+        .anomaly-table { background: #fff5f5; border-left: 4px solid #dc3545; padding: 15px; margin-top: 10px; border-radius: 4px; font-size: 0.9em; }
+        .footer { background: #f9f9f9; padding: 20px 40px; border-top: 2px solid #e0e0e0; text-align: center; color: #999; font-size: 0.9em; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            table { font-size: 0.85em; }
+            table th, table td { padding: 8px; }
+            .metric-box { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 Santa Clara Family Healthcare Large‑Scale Data Comparison & Validation Automation</h1>
+            <p>Comprehensive Data Quality Assessment</p>
+        </div>
+
+        <div class="meta">
+            <div class="meta-item">
+                <strong>Report Date</strong>
+                <span>13/4/2026, 11:53:33 am</span>
+            </div>
+            <div class="meta-item">
+                <strong>Test Suites</strong>
+                <span>Mandatoryfields</span>
+            </div>
+            <div class="meta-item">
+                <strong>Total Duration</strong>
+                <span>0.05s</span>
+            </div>
+            <div class="meta-item">
+                <strong>Pass Rate</strong>
+                <span>0.0%</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- EXECUTIVE SUMMARY -->
+            <section>
+                <h2>📌 Executive Summary</h2>
+                <div class="metric-box">
+                    <div class="metric">
+                        <strong>Datasets Validated</strong>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="metric pass">
+                        <strong>Total Anomalies</strong>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="metric">
+                        <strong>Quality Score</strong>
+                        <div class="value">100.0%</div>
+                    </div>
+                    <div class="metric">
+                        <strong>Captured Queries</strong>
+                        <div class="value">0</div>
+                    </div>
+                </div>
+                <p>All validated tables passed schema checks. No schema issues were detected.</p>
+            </section>
+
+            <!-- TABLE 1: TEST RESULTS SUMMARY -->
+            <section>
+                <h2>📊 Test Results Summary</h2>
+                <div class="metric-box">
+                    <div class="metric">
+                        <strong>Total Tests</strong>
+                        <div class="value">1</div>
+                    </div>
+                    <div class="metric pass">
+                        <strong>Passed</strong>
+                        <div class="value">0</div>
+                    </div>
+                    <div class="metric fail">
+                        <strong>Failed</strong>
+                        <div class="value">1</div>
+                    </div>
+                    <div class="metric">
+                        <strong>Success Rate</strong>
+                        <div class="value">0%</div>
+                    </div>
+                </div>
+                
+                
+                <div style="background: #fff5f5; border-left: 4px solid #dc3545; padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <strong style="color: #721c24;">⚠️ 1 Test(s) Failed</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px; color: #721c24;">
+                        <li>Validate Patients Data - Mandatory Fields & Consistency</li>
+                    </ul>
+                </div>
+                
+            </section>
+
+            <!-- CHARTS -->
+            <section>
+                <h2>📈 Executive Charts</h2>
+                <div class="metric-box" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div style="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+                        <strong>Test Outcome Distribution</strong>
+                        <canvas id="passFailChart" style="max-height:260px; width:100%;"></canvas>
+                    </div>
+                    <div style="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+                        <strong>Data Issue Counts by Table</strong>
+                        <canvas id="tableAnomalyChart" style="max-height:260px; width:100%;"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TABLE 2: DETAILED TEST RESULTS -->
+            <section>
+                <h2>🧪 Test Execution Details</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Test Name</th>
+                            <th>Suite</th>
+                            <th>Status</th>
+                            <th>Duration</th>
+                            <th>Business Rules</th>
+                            <th>Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="fail">
+                                <td><strong>Validate Patients Data - Mandatory Fields &amp; Consistency</strong></td>
+                                <td>Mandatoryfields</td>
+                                <td><span class="badge fail">❌ FAIL</span></td>
+                                <td>53ms</td>
+                                <td>Dependencies Validation</td>
+                                <td><div style="font-size:0.95em; line-height:1.4;">{&quot;name&quot;:&quot;Error&quot;,&quot;matcherResult&quot;:{&quot;actual&quot;:7,&quot;expected&quot;:0,&quot;message&quot;:&quot;expect(received).toBe(expected) // Object.is equality\n\nExpected: 0\nReceived: 7&quot;,&quot;name&quot;:&quot;toBe&quot;,&quot;pass&quot;:false}}</div>
+                                <details style="margin-top: 8px; font-size: 0.85em; color: #444;"><summary style="cursor: pointer;">View technical details</summary><pre style="white-space: pre-wrap; background: #f8f9fa; border: 1px solid #e0e0e0; padding: 10px; border-radius: 4px; overflow-x: auto;">{
+  &quot;name&quot;: &quot;Error&quot;,
+  &quot;matcherResult&quot;: {
+    &quot;actual&quot;: 7,
+    &quot;expected&quot;: 0,
+    &quot;message&quot;: &quot;expect(received).toBe(expected) // Object.is equality\n\nExpected: 0\nReceived: 7&quot;,
+    &quot;name&quot;: &quot;toBe&quot;,
+    &quot;pass&quot;: false
+  }
+}</pre></details>
+                            </td>
+                            </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- TABLE 3: VALIDATION ISSUES BY TABLE -->
+            <section>
+                <h2>📋 Data Quality Issues by Table</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Table</th>
+                            <th>Source Count</th>
+                            <th>Target Count</th>
+                            <th>% Match</th>
+                            <th>Anomalies Found</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="6" style="text-align:center; padding:20px; color:#666;">No validation contexts recorded yet.</td></tr>
+                    </tbody>
+                </table>
+
+                
+            </section>
+        </div>
+
+        <div class="footer">
+            <p>Generated on 13/4/2026, 11:53:33 am | Healthcare Data Validation Framework v1.0</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const passFailData = {
+            labels: ['Passed', 'Failed'],
+            datasets: [{
+                data: [0, 1],
+                backgroundColor: ['#28a745', '#dc3545']
+            }]
+        };
+
+        const tableLabels = [];
+        const anomalyCounts = [];
+
+        const passFailChart = document.getElementById('passFailChart');
+        if (passFailChart) {
+            new Chart(passFailChart, {
+                type: 'doughnut',
+                data: passFailData,
+                options: {
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { callbacks: { label: function(t) { return t.label + ': ' + t.parsed; } } }
+                    }
+                }
+            });
+        }
+
+        const tableAnomalyChart = document.getElementById('tableAnomalyChart');
+        if (tableAnomalyChart) {
+            new Chart(tableAnomalyChart, {
+                type: 'bar',
+                data: {
+                    labels: tableLabels,
+                    datasets: [{
+                        label: 'Anomaly count',
+                        data: anomalyCounts,
+                        backgroundColor: '#f7b924'
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: { beginAtZero: true, ticks: { precision: 0 } }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "table_name": "patients",
+  "description": "Patient demographic information schema",
+  "columns": [
+    {
+      "name": "patient_id",
+      "type": "number",
+      "nullable": false,
+      "description": "Unique patient identifier"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "nullable": false,
+      "description": "Patient full name"
+    },
+    {
+      "name": "dob",
+      "type": "string",
+      "nullable": false,
+      "description": "Date of birth in ISO 8601 format"
+    },
+    {
+      "name": "gender",
+      "type": "string",
+      "nullable": false,
+      "description": "Gender (M, F, or O)"
+    }
+  ],
+  "required_fields": ["patient_id", "name", "dob", "gender"],
+  "expected_column_count": 4,
+  "validations": {
+    "mandatory_columns": true,
+    "no_extra_columns": true,
+    "data_type_match": true,
+    "no_null_in_mandatory": true
+  }
+}

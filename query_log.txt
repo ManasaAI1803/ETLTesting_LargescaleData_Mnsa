@@ -1,0 +1,1496 @@
+[2026-04-09T07:18:51.263Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:18:51.269Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:18:51.287Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:18:51.290Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:18:51.354Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:18:51.356Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:18:52.588Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:18:52.591Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:18:52.646Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:18:52.647Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:18:52.724Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:18:52.727Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:18:54.003Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:18:54.005Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:18:54.017Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:18:54.021Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:18:54.025Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:18:54.028Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:18:55.333Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:18:55.335Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:18:55.333Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:18:55.335Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:18:55.360Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:18:55.362Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:18:56.636Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:18:56.651Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:18:56.638Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:18:56.653Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:18:56.676Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:18:56.679Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:20:42.021Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:20:42.022Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:20:42.076Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:20:42.079Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:20:42.073Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:20:42.075Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:20:43.317Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:20:43.319Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:20:43.377Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:20:43.379Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:20:43.394Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:20:43.396Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:20:44.620Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:20:44.622Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:20:44.695Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:20:44.696Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:20:44.749Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:20:44.750Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:20:45.814Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:20:45.817Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:20:45.983Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:20:45.986Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:20:46.107Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:20:46.111Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:20:47.134Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:20:47.136Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:20:47.379Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:20:47.380Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:20:47.399Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:20:47.400Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:23:13.643Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:23:13.645Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:23:13.663Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:23:13.666Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:23:13.684Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:23:13.685Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:23:15.029Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:23:15.031Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:23:15.039Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:23:15.042Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:23:15.044Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:23:15.045Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:23:16.345Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:23:16.348Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:23:16.349Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:23:16.351Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:23:16.417Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:23:16.419Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:23:17.651Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:23:17.652Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:23:17.720Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:23:17.722Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:23:17.826Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:23:17.827Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:23:18.934Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:23:18.937Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:23:19.037Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:23:19.039Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:23:19.082Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:23:19.083Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:26:43.190Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:26:43.192Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:26:44.328Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:26:44.329Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:26:45.398Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:26:45.400Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:26:46.425Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:26:46.427Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:26:47.539Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:26:47.540Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+
+[2026-04-09T07:28:04.729Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:28:04.731Z] Query: SELECT 
+    patient_id, 
+    first_name, 
+    last_name, 
+    date_of_birth, 
+    gender, 
+    address, 
+    phone_number 
+FROM 
+    patients;
+Params: undefined
+
+[2026-04-09T07:28:05.860Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    contact_info 
+FROM 
+    providers 
+WHERE 
+    is_active = 1;
+Params: undefined
+
+[2026-04-09T07:28:05.862Z] Query: SELECT 
+    provider_id, 
+    provider_name, 
+    specialty, 
+    phone_number, 
+    email 
+FROM 
+    providers;
+Params: undefined
+
+[2026-04-09T07:28:06.953Z] Query: SELECT 
+    v.visit_id,
+    v.patient_id,
+    v.provider_id,
+    v.visit_date,
+    v.visit_type,
+    v.notes
+FROM 
+    visits v
+WHERE 
+    v.visit_date IS NULL 
+    OR v.patient_id IS NULL 
+    OR v.provider_id IS NULL 
+    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');
+Params: undefined
+
+[2026-04-09T07:28:06.955Z] Query: SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;
+Params: undefined
+
+[2026-04-09T07:28:08.041Z] Query: SELECT 
+    m.medication_id, 
+    m.patient_id, 
+    m.provider_id, 
+    m.medication_name, 
+    m.dosage, 
+    m.start_date, 
+    m.end_date 
+FROM 
+    medications m 
+WHERE 
+    m.start_date IS NULL 
+    OR m.end_date IS NULL 
+    OR m.medication_name IS NULL 
+    OR m.dosage IS NULL;
+Params: undefined
+
+[2026-04-09T07:28:08.045Z] Query: SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;
+Params: undefined
+
+[2026-04-09T07:28:09.185Z] Query: SELECT 
+    b.billing_id, 
+    b.patient_id, 
+    b.provider_id, 
+    b.visit_id, 
+    b.amount, 
+    b.date 
+FROM 
+    billing b 
+WHERE 
+    b.amount IS NULL 
+    OR b.date IS NULL 
+    OR b.patient_id IS NULL 
+    OR b.provider_id IS NULL 
+    OR b.visit_id IS NULL;
+Params: undefined
+
+[2026-04-09T07:28:09.187Z] Query: SELECT 
+    b.billing_id,
+    b.patient_id,
+    b.provider_id,
+    b.amount,
+    b.date,
+    b.status
+FROM 
+    target.billing b
+WHERE 
+    b.amount < 0 OR 
+    b.status NOT IN ('Paid', 'Pending', 'Denied') OR 
+    b.date IS NULL;
+Params: undefined
+

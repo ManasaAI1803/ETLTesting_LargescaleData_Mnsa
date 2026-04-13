@@ -1,0 +1,42 @@
+[
+  {
+    "suite": "Mandatoryfields",
+    "test": "Validate Patients Data - Mandatory Fields & Consistency",
+    "status": "fail",
+    "duration": 53,
+    "details": {
+      "name": "Error",
+      "matcherResult": {
+        "actual": 7,
+        "expected": 0,
+        "message": "\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m7\u001b[39m",
+        "name": "toBe",
+        "pass": false
+      }
+    },
+    "steps": [
+      {
+        "name": "Fetch source data",
+        "status": "pass",
+        "log": "✅ Loaded 10 source records",
+        "timestamp": "2026-04-13T06:23:33.686Z"
+      },
+      {
+        "name": "Fetch target data",
+        "status": "pass",
+        "log": "✅ Loaded 10 target records",
+        "timestamp": "2026-04-13T06:23:33.698Z"
+      },
+      {
+        "name": "Error",
+        "status": "fail",
+        "log": "❌ Expected no anomalies in patients validation",
+        "timestamp": "2026-04-13T06:23:33.721Z"
+      }
+    ],
+    "timestamp": "2026-04-13T06:23:33.721Z",
+    "businessRulesApplied": [
+      "Dependencies Validation"
+    ]
+  }
+]

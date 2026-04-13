@@ -1,0 +1,180 @@
+# Healthcare Data Validation Business Rules
+# Comprehensive rules for validating healthcare data tables
+# This file defines mandatory fields, acceptable values, and validation rules for each table
+# Used for documentation and potential future dynamic loading
+
+version: "1.0.0"
+last_updated: "2026-04-09"
+description: "Business rules for schema validation, data quality checks, and referential integrity in healthcare datasets"
+
+tables:
+  patients:
+    description: "Patient demographic information"
+    mandatory_fields:
+      - patient_id
+      - name
+      - dob
+      - gender
+    acceptable_values:
+      gender:
+        - "M"
+        - "F"
+        - "O"
+    validation_rules:
+      patient_id: "Must be a positive number (integer > 0)"
+      name: "Must be a non-empty string (trimmed length > 0)"
+      dob: "Must be a valid date (parseable by Date constructor)"
+      gender: "Must be one of: M, F, O"
+    base_validations:
+      - schema_compatibility: "Ensure column count, data types match; detect missing/extra columns"
+      - row_count_comparison: "Compare total record counts between source and target"
+      - data_hash_comparison: "MD5 hash of sorted data for content verification"
+      - data_consistency: "Check ID uniqueness and cross-dataset consistency"
+      - missing_extra_records: "Detect missing or extra rows via automated diff"
+      - dependencies: "No foreign key dependencies (root table)"
+
+  providers:
+    description: "Healthcare provider information"
+    mandatory_fields:
+      - provider_id
+      - name
+      - specialty
+    validation_rules:
+      provider_id: "Must be a positive number (integer > 0)"
+      name: "Must be a non-empty string (trimmed length > 0)"
+      specialty: "Must be a non-empty string (trimmed length > 0)"
+    base_validations:
+      - schema_compatibility: "Ensure column count, data types match; detect missing/extra columns"
+      - row_count_comparison: "Compare total record counts between source and target"
+      - data_hash_comparison: "MD5 hash of sorted data for content verification"
+      - data_consistency: "Check ID uniqueness and cross-dataset consistency"
+      - missing_extra_records: "Detect missing or extra rows via automated diff"
+      - dependencies: "No foreign key dependencies (root table)"
+
+  visits:
+    description: "Patient visit records"
+    mandatory_fields:
+      - visit_id
+      - patient_id
+      - provider_id
+      - visit_date
+    validation_rules:
+      visit_id: "Must be a positive number (integer > 0)"
+      patient_id: "Must be a positive number (integer > 0)"
+      provider_id: "Must be a positive number (integer > 0)"
+      visit_date: "Must be a valid date (parseable by Date constructor)"
+    base_validations:
+      - schema_compatibility: "Ensure column count, data types match; detect missing/extra columns"
+      - row_count_comparison: "Compare total record counts between source and target"
+      - data_hash_comparison: "MD5 hash of sorted data for content verification"
+      - data_consistency: "Check ID uniqueness and cross-dataset consistency"
+      - missing_extra_records: "Detect missing or extra rows via automated diff"
+      - dependencies: "patient_id must reference existing patients.patient_id; provider_id must reference existing providers.provider_id"
+
+  medications:
+    description: "Patient medication records"
+    mandatory_fields:
+      - medication_id
+      - patient_id
+      - name
+      - dosage
+    validation_rules:
+      medication_id: "Must be a positive number (integer > 0)"
+      patient_id: "Must be a positive number (integer > 0)"
+      name: "Must be a non-empty string (trimmed length > 0)"
+      dosage: "Must be a non-empty string (trimmed length > 0)"
+    base_validations:
+      - schema_compatibility: "Ensure column count, data types match; detect missing/extra columns"
+      - row_count_comparison: "Compare total record counts between source and target"
+      - data_hash_comparison: "MD5 hash of sorted data for content verification"
+      - data_consistency: "Check ID uniqueness and cross-dataset consistency"
+      - missing_extra_records: "Detect missing or extra rows via automated diff"
+      - dependencies: "patient_id must reference existing patients.patient_id"
+
+  billing:
+    description: "Visit billing information"
+    mandatory_fields:
+      - billing_id
+      - visit_id
+      - amount
+      - date
+    validation_rules:
+      billing_id: "Must be a positive number (integer > 0)"
+      visit_id: "Must be a positive number (integer > 0)"
+      amount: "Must be a non-negative number (float >= 0)"
+      date: "Must be a valid date (parseable by Date constructor)"
+    base_validations:
+      - schema_compatibility: "Ensure column count, data types match; detect missing/extra columns"
+      - row_count_comparison: "Compare total record counts between source and target"
+      - data_hash_comparison: "MD5 hash of sorted data for content verification"
+      - data_consistency: "Check ID uniqueness and cross-dataset consistency"
+      - missing_extra_records: "Detect missing or extra rows via automated diff"
+      - dependencies: "visit_id must reference existing visits.visit_id"
+
+validation_framework:
+  description: "Core validation framework applied to all tables"
+  base_validator_checks:
+    - mandatory_fields: "Ensure all required fields are present and non-null"
+    - validation_rules: "Apply business logic validation functions to each field"
+    - schema_compatibility: "Validate column structure (count, types, names) between source and target"
+    - row_count_comparison: "Compare total record counts for discrepancies"
+    - data_hash_comparison: "Compare data content via MD5 hashing of sorted records"
+    - data_consistency: "Check for duplicate IDs, missing records, and cross-dataset integrity"
+    - missing_extra_records: "Automated detection of missing/extra rows using set operations"
+    - dependency_validation: "Validate foreign key relationships and referential integrity"
+
+  advanced_features:
+    - partitioned_comparison: "Validate subsets by date ranges, regions, or business keys"
+    - sampling_strategy: "100% validation on critical columns; sampled checks on others"
+    - automated_diff_detection: "Identify missing rows (source-only), extra rows (target-only), changed rows (hash mismatch), transformation errors (formatting issues)"
+
+  report_generation:
+    description: "HTML report structure generated after validation"
+    tables_included:
+      - "Test Results Summary: Overall pass/fail counts and percentages"
+      - "Detailed Test Execution: Step-by-step test logs with timestamps"
+      - "Data Quality Issues by Table: Anomalies grouped by table with counts, match percentages, applied rules, and detailed error lists"
+    common_anomaly_descriptions:
+      - "Amount is NULL or negative (billing validation)"
+      - "Invalid gender value (must be M/F/O)"
+      - "Missing mandatory field (e.g., patient_id is null)"
+      - "Schema mismatch (extra/missing column or type difference)"
+      - "Row count mismatch (source vs target totals differ)"
+      - "Data hash mismatch (content differs despite same count)"
+      - "Foreign key reference not found (broken relationship)"
+      - "Invalid date format (unparseable date string)"
+
+  test_coverage:
+    description: "Test scenarios covered in the validation suite"
+    positive_cases: "Valid data that should pass all validations (e.g., correct types, existing references)"
+    negative_cases: "Invalid data designed to trigger specific failures (e.g., null mandatory fields, invalid enums)"
+    schema_mismatches: "Extra/missing columns, data type differences, column renames"
+    data_inconsistencies: "Hash mismatches, count differences, duplicate IDs, invalid references"
+    dependency_failures: "Broken foreign key relationships (e.g., patient_id not in patients)"
+    transformation_errors: "Data type conversion issues, formatting problems (e.g., date strings)"
+      - row_count_comparison: "Source vs target record count matching"
+      - data_hash_comparison: "MD5 hash of sorted data for content verification"
+      - data_consistency: "ID uniqueness and cross-dataset consistency"
+      - dependencies: "visitId must exist in visits.id"
+
+validation_framework:
+  base_validator_checks:
+    - mandatory_fields: "Ensures all required fields are present and non-null"
+    - validation_rules: "Applies business logic validation functions"
+    - schema_compatibility: "Validates column structure between source and target"
+    - row_count_comparison: "Compares total record counts"
+    - data_hash_comparison: "Compares data content via MD5 hashing"
+    - data_consistency: "Checks for duplicate IDs and missing records"
+    - dependency_validation: "Validates foreign key relationships"
+
+  report_generation:
+    tables_included:
+      - Test Results Summary
+      - Detailed Test Execution
+      - Data Quality Issues by Table (with counts, % match, rules applied, anomalies)
+
+  test_coverage:
+    positive_cases: "Valid data that should pass all validations"
+    negative_cases: "Invalid data designed to trigger specific validation failures"
+    schema_mismatches: "Extra/missing columns, type differences"
+    data_inconsistencies: "Hash mismatches, count differences, invalid references"

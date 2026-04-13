@@ -1,0 +1,9 @@
+SELECT 
+    visit_id,
+    patient_id,
+    provider_id,
+    visit_date,
+    visit_type,
+    notes
+FROM 
+    visits;

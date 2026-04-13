@@ -1,0 +1,11 @@
+SELECT 
+    medication_id,
+    patient_id,
+    provider_id,
+    medication_name,
+    dosage,
+    frequency,
+    start_date,
+    end_date
+FROM 
+    target_medications;

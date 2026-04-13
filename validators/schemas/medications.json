@@ -1,0 +1,38 @@
+{
+  "table_name": "medications",
+  "description": "Patient medication records schema",
+  "columns": [
+    {
+      "name": "medication_id",
+      "type": "number",
+      "nullable": false,
+      "description": "Unique medication record identifier"
+    },
+    {
+      "name": "patient_id",
+      "type": "number",
+      "nullable": false,
+      "description": "Reference to patient"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "nullable": false,
+      "description": "Medication name"
+    },
+    {
+      "name": "dosage",
+      "type": "string",
+      "nullable": false,
+      "description": "Medication dosage and unit"
+    }
+  ],
+  "required_fields": ["medication_id", "patient_id", "name", "dosage"],
+  "expected_column_count": 4,
+  "validations": {
+    "mandatory_columns": true,
+    "no_extra_columns": true,
+    "data_type_match": true,
+    "no_null_in_mandatory": true
+  }
+}

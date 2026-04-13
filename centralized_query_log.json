@@ -1,0 +1,1193 @@
+{
+  "queries": [
+    {
+      "timestamp": "2026-04-09T07:53:40.827Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T07:53:40.829Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T07:53:40.867Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T07:53:40.869Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T07:53:40.900Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T07:53:40.901Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T07:53:40.925Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T07:53:40.926Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T07:53:40.952Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T07:53:40.953Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.798Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.840Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.854Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.856Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.858Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.860Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.861Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.862Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.884Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.907Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.932Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.946Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.948Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.959Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.977Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:38.979Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.016Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.018Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.024Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.049Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.050Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.062Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.063Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.073Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.074Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.076Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.077Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.087Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.091Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.102Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.103Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.114Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.115Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.129Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.130Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.140Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.141Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.142Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.143Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.145Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.145Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.146Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.146Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.147Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.148Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.166Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.167Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.168Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.168Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:39.169Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.008Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.013Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.015Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.016Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.018Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.019Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.021Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.023Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.024Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.026Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.038Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.039Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.061Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.062Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.063Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.064Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:20:40.065Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.233Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.242Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.244Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.284Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.288Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.291Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.292Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.287Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.289Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.311Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.316Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.326Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.328Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.340Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.342Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.345Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.347Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.358Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.361Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.359Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.363Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.365Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.367Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.369Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.377Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.386Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.388Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.391Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.406Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.407Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.410Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.411Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.431Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.433Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.439Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.440Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.445Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.447Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.470Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.473Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.475Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.476Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.477Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.478Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.488Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.505Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.506Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.517Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.519Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.520Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.542Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.544Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.546Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.547Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.548Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.550Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.551Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.552Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.553Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.554Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.555Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.556Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.558Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.559Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.561Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.562Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.563Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.565Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.566Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.568Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.570Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.572Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.588Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:28:58.589Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.583Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.606Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.607Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.609Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.636Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.637Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.670Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.672Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.673Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.674Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.677Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.694Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.699Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.696Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.700Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.742Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.744Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.737Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.741Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.746Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.749Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.775Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.781Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.782Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.785Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.796Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.798Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.814Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.816Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.819Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.821Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.833Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.834Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.851Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.852Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.850Z",
+      "source": "repository",
+      "query": "SELECT \n    v.visit_id,\n    v.patient_id,\n    v.provider_id,\n    v.visit_date,\n    v.visit_type,\n    v.notes\nFROM \n    visits v\nWHERE \n    v.visit_date IS NULL \n    OR v.patient_id IS NULL \n    OR v.provider_id IS NULL \n    OR v.visit_type NOT IN ('Routine', 'Emergency', 'Follow-up');",
+      "table": "visits_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.852Z",
+      "source": "repository",
+      "query": "SELECT \n    visit_id,\n    patient_id,\n    provider_id,\n    visit_date,\n    visit_type,\n    notes\nFROM \n    visits;",
+      "table": "visits_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.866Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.868Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients;",
+      "table": "patients_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.887Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id, \n    b.patient_id, \n    b.provider_id, \n    b.visit_id, \n    b.amount, \n    b.date \nFROM \n    billing b \nWHERE \n    b.amount IS NULL \n    OR b.date IS NULL \n    OR b.patient_id IS NULL \n    OR b.provider_id IS NULL \n    OR b.visit_id IS NULL;",
+      "table": "billing_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.888Z",
+      "source": "repository",
+      "query": "SELECT \n    b.billing_id,\n    b.patient_id,\n    b.provider_id,\n    b.amount,\n    b.date,\n    b.status\nFROM \n    target.billing b\nWHERE \n    b.amount < 0 OR \n    b.status NOT IN ('Paid', 'Pending', 'Denied') OR \n    b.date IS NULL;",
+      "table": "billing_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.891Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    contact_info \nFROM \n    providers \nWHERE \n    is_active = 1;",
+      "table": "providers_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.897Z",
+      "source": "repository",
+      "query": "SELECT \n    provider_id, \n    provider_name, \n    specialty, \n    phone_number, \n    email \nFROM \n    providers;",
+      "table": "providers_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.899Z",
+      "source": "repository",
+      "query": "SELECT \n    m.medication_id, \n    m.patient_id, \n    m.provider_id, \n    m.medication_name, \n    m.dosage, \n    m.start_date, \n    m.end_date \nFROM \n    medications m \nWHERE \n    m.start_date IS NULL \n    OR m.end_date IS NULL \n    OR m.medication_name IS NULL \n    OR m.dosage IS NULL;",
+      "table": "medications_source"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.901Z",
+      "source": "repository",
+      "query": "SELECT \n    medication_id,\n    patient_id,\n    provider_id,\n    medication_name,\n    dosage,\n    frequency,\n    start_date,\n    end_date\nFROM \n    target_medications;",
+      "table": "medications_target"
+    },
+    {
+      "timestamp": "2026-04-09T08:51:24.906Z",
+      "source": "repository",
+      "query": "SELECT \n    patient_id, \n    first_name, \n    last_name, \n    date_of_birth, \n    gender, \n    address, \n    phone_number \nFROM \n    patients \nWHERE \n    is_active = 1;",
+      "table": "patients_source"
+    }
+  ],
+  "timestamp": "2026-04-09T07:53:39.745Z",
+  "lastUpdated": "2026-04-09T08:51:24.906Z"
+}e"
+    }
+  ],
+  "timestamp": "2026-04-09T07:53:39.745Z",
+  "lastUpdated": "2026-04-09T08:51:24.904Z"
+}
